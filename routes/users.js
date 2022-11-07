@@ -42,7 +42,7 @@ router.post("/login", async function (req, res) {
 
     const user = await db
       .collection("registered_users")
-      .findOne({ username: req.body.username });
+      .findOne({ email: req.body.email });
     if (user) {
       const match = await bcryptjs.compare(req.body.password, user.password);
       if (match) {
